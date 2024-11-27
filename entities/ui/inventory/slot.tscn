@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6aqqgi7bq7wy"]
+
+[ext_resource type="Texture2D" uid="uid://tvlfkua0xc87" path="res://entities/ui/asset/slot.png" id="1_he06d"]
+[ext_resource type="Script" path="res://entities/ui/inventory/item_slot.gd" id="1_onoqh"]
+
+[node name="InventorySlot" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_onoqh")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_he06d")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

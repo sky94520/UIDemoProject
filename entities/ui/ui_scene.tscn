@@ -1,0 +1,595 @@
+[gd_scene load_steps=24 format=3 uid="uid://bwg10qxp2awoi"]
+
+[ext_resource type="StyleBox" uid="uid://c3fm88oqhj3wh" path="res://entities/ui/theme/hover_button.tres" id="1_smstu"]
+[ext_resource type="StyleBox" uid="uid://d3fh8ji1x5ndm" path="res://entities/ui/theme/normal_button.tres" id="2_5sh6w"]
+[ext_resource type="Script" path="res://entities/ui/ui_scene.gd" id="3_62lj0"]
+[ext_resource type="Texture2D" uid="uid://ds0tn34u8qvpe" path="res://entities/ui/asset/ui_window.png" id="4_72ocx"]
+[ext_resource type="Texture2D" uid="uid://b746qfhf6vtd0" path="res://entities/ui/asset/GUI.png" id="5_lvwbk"]
+[ext_resource type="PackedScene" uid="uid://b6aqqgi7bq7wy" path="res://entities/ui/inventory/slot.tscn" id="6_u22y7"]
+[ext_resource type="Resource" uid="uid://ckedgg0f7a4w6" path="res://entities/items/axe/axe.tres" id="7_nvvpf"]
+[ext_resource type="Resource" uid="uid://dns7akyu5r866" path="res://entities/items/sword/sword.tres" id="8_5j1gl"]
+[ext_resource type="Texture2D" uid="uid://tvlfkua0xc87" path="res://entities/ui/asset/slot.png" id="9_sleov"]
+[ext_resource type="PackedScene" uid="uid://4i4qu1ucotbw" path="res://entities/ui/party/party_slot.tscn" id="10_v2iwy"]
+[ext_resource type="Resource" uid="uid://p6gan7yqq3gi" path="res://entities/characters/amy/amy.tres" id="11_f80xk"]
+[ext_resource type="Resource" uid="uid://d3qxymm06dlb5" path="res://entities/characters/bob/bob.tres" id="12_yoy8x"]
+
+[sub_resource type="Theme" id="Theme_aie5m"]
+Button/styles/hover = ExtResource("1_smstu")
+Button/styles/normal = ExtResource("2_5sh6w")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.556863)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.556863)
+RichTextLabel/font_sizes/normal_font_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb5iy"]
+
+[sub_resource type="Theme" id="Theme_mqg5w"]
+Button/font_sizes/font_size = 8
+Button/styles/focus = SubResource("StyleBoxEmpty_wb5iy")
+Button/styles/hover = ExtResource("1_smstu")
+Button/styles/normal = ExtResource("2_5sh6w")
+
+[sub_resource type="Animation" id="Animation_htpdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Party:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(42, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Party:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Inventory:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24.5, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Inventory:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(139, 70)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Menu:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_knmo2"]
+resource_name = "hide_inventory"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(24.5, 2), Vector2(25, -222)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dwb3k"]
+resource_name = "hide_menu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(139, 70), Vector2(-118, 70)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mxf0o"]
+resource_name = "hide_party"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Party:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(42, 8), Vector2(399, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Party:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_iby6c"]
+resource_name = "show_inventory"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(25, -222), Vector2(24.5, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_jnrpl"]
+resource_name = "show_menu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(-118, 70), Vector2(139, 70)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_m5mq6"]
+resource_name = "show_party"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Party:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(399, 8), Vector2(42, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Party:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x67vj"]
+_data = {
+"RESET": SubResource("Animation_htpdq"),
+"hide_inventory": SubResource("Animation_knmo2"),
+"hide_menu": SubResource("Animation_dwb3k"),
+"hide_party": SubResource("Animation_mxf0o"),
+"show_inventory": SubResource("Animation_iby6c"),
+"show_menu": SubResource("Animation_jnrpl"),
+"show_party": SubResource("Animation_m5mq6")
+}
+
+[node name="UI" type="Control" node_paths=PackedStringArray("menu", "inventory", "party", "animation_player", "description", "party_description")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_aie5m")
+script = ExtResource("3_62lj0")
+menu = NodePath("Menu")
+inventory = NodePath("Inventory")
+party = NodePath("Party")
+animation_player = NodePath("AnimationPlayer")
+description = NodePath("Inventory/Description")
+party_description = NodePath("Party/Description")
+
+[node name="Menu" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -38.0
+offset_right = 53.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_72ocx")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -26.0
+offset_right = 40.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Inventory" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_mqg5w")
+text = "Inventory"
+
+[node name="Party" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_mqg5w")
+text = "Party"
+
+[node name="Quit" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_mqg5w")
+text = "Quit"
+
+[node name="Inventory" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.5
+offset_top = -106.0
+offset_right = 167.5
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_lvwbk")
+region_rect = Rect2(0, 96, 48, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.5
+offset_top = -89.0
+offset_right = 156.5
+offset_bottom = 87.0
+grow_vertical = 2
+columns = 4
+
+[node name="InventorySlot" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+item = ExtResource("7_nvvpf")
+
+[node name="InventorySlot2" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+item = ExtResource("8_5j1gl")
+
+[node name="InventorySlot3" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Inventory/GridContainer" instance=ExtResource("6_u22y7")]
+layout_mode = 2
+
+[node name="Description" type="NinePatchRect" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -66.0
+offset_right = -22.5
+offset_bottom = 65.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_sleov")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Name" type="Label" parent="Inventory/Description"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 49.0
+offset_bottom = 22.0
+
+[node name="Description" type="RichTextLabel" parent="Inventory/Description"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -19.5
+offset_right = 50.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+scroll_active = false
+
+[node name="Icon" type="TextureRect" parent="Inventory/Description"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -51.0
+offset_right = -7.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(41, 48)
+
+[node name="Party" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_lvwbk")
+region_rect = Rect2(1, 96, 46, 32)
+patch_margin_left = 5
+patch_margin_top = 6
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Party"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -79.0
+offset_right = 10.0
+offset_bottom = 79.0
+grow_vertical = 2
+
+[node name="PartySlot" parent="Party/VBoxContainer" instance=ExtResource("10_v2iwy")]
+layout_mode = 2
+character = ExtResource("11_f80xk")
+
+[node name="PartySlot2" parent="Party/VBoxContainer" instance=ExtResource("10_v2iwy")]
+layout_mode = 2
+character = ExtResource("12_yoy8x")
+
+[node name="PartySlot3" parent="Party/VBoxContainer" instance=ExtResource("10_v2iwy")]
+layout_mode = 2
+
+[node name="Description" type="NinePatchRect" parent="Party"]
+custom_minimum_size = Vector2(120, 140)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -58.0
+offset_right = -23.0
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_sleov")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Icon" type="TextureRect" parent="Party/Description"]
+layout_mode = 1
+offset_left = 33.0
+offset_top = 4.0
+offset_right = 93.0
+offset_bottom = 84.0
+stretch_mode = 4
+
+[node name="Description" type="RichTextLabel" parent="Party/Description"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -49.0
+offset_right = 55.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x67vj")
+}
+
+[connection signal="pressed" from="Menu/VBoxContainer/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Party" to="." method="_on_party_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

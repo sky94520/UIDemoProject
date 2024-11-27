@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dns7akyu5r866"]
+
+[ext_resource type="Script" path="res://entities/items/item.gd" id="1_fdmd4"]
+[ext_resource type="Texture2D" uid="uid://bkla7vc620meb" path="res://entities/items/sword/sword.png" id="1_lxalt"]
+
+[resource]
+script = ExtResource("1_fdmd4")
+title = "Sword"
+icon = ExtResource("1_lxalt")
+description = "Knight's sword, can pierce armor. This sword can slice anything like butter."

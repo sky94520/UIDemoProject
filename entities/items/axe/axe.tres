@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ckedgg0f7a4w6"]
+
+[ext_resource type="Texture2D" uid="uid://cw3hl2sw7kis4" path="res://entities/items/axe/axe.png" id="1_hxb0p"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="2_cx2hg"]
+
+[resource]
+script = ExtResource("2_cx2hg")
+title = "Axe"
+icon = ExtResource("1_hxb0p")
+description = "Axe deals damage to enemies, this axe belongs to one of the "
